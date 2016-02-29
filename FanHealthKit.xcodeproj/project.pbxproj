@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6606ABEE1C07F1D00084ECEA /* FanUserInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606ABED1C07F1D00084ECEA /* FanUserInfoTableViewController.swift */; };
 		660DC57B1C06E0D800D94F8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC57A1C06E0D800D94F8C /* AppDelegate.swift */; };
 		660DC57D1C06E0D800D94F8C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC57C1C06E0D800D94F8C /* ViewController.swift */; };
 		660DC5801C06E0D800D94F8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660DC57E1C06E0D800D94F8C /* Main.storyboard */; };
@@ -14,6 +15,10 @@
 		660DC5851C06E0D800D94F8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660DC5831C06E0D800D94F8C /* LaunchScreen.storyboard */; };
 		660DC5901C06E0D800D94F8C /* FanHealthKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC58F1C06E0D800D94F8C /* FanHealthKitTests.swift */; };
 		660DC59B1C06E0D800D94F8C /* FanHealthKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC59A1C06E0D800D94F8C /* FanHealthKitUITests.swift */; };
+		660DC5A91C06E10600D94F8C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660DC5A81C06E10600D94F8C /* HealthKit.framework */; };
+		660DC5AC1C06EC7B00D94F8C /* FanHealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC5AB1C06EC7B00D94F8C /* FanHealthManager.swift */; };
+		660DC5AF1C0706F900D94F8C /* FanHealthKitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC5AE1C0706F900D94F8C /* FanHealthKitTableViewController.swift */; };
+		660DC5B11C070FBC00D94F8C /* FanWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC5B01C070FBC00D94F8C /* FanWorkoutTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6606ABED1C07F1D00084ECEA /* FanUserInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanUserInfoTableViewController.swift; sourceTree = "<group>"; };
 		660DC5771C06E0D800D94F8C /* FanHealthKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanHealthKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		660DC57A1C06E0D800D94F8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		660DC57C1C06E0D800D94F8C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +53,11 @@
 		660DC5961C06E0D800D94F8C /* FanHealthKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FanHealthKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		660DC59A1C06E0D800D94F8C /* FanHealthKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanHealthKitUITests.swift; sourceTree = "<group>"; };
 		660DC59C1C06E0D800D94F8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		660DC5A81C06E10600D94F8C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		660DC5AA1C06E10600D94F8C /* FanHealthKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FanHealthKit.entitlements; sourceTree = "<group>"; };
+		660DC5AB1C06EC7B00D94F8C /* FanHealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanHealthManager.swift; sourceTree = "<group>"; };
+		660DC5AE1C0706F900D94F8C /* FanHealthKitTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanHealthKitTableViewController.swift; sourceTree = "<group>"; };
+		660DC5B01C070FBC00D94F8C /* FanWorkoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanWorkoutTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				660DC5A91C06E10600D94F8C /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +89,7 @@
 		660DC56E1C06E0D800D94F8C = {
 			isa = PBXGroup;
 			children = (
+				660DC5A81C06E10600D94F8C /* HealthKit.framework */,
 				660DC5791C06E0D800D94F8C /* FanHealthKit */,
 				660DC58E1C06E0D800D94F8C /* FanHealthKitTests */,
 				660DC5991C06E0D800D94F8C /* FanHealthKitUITests */,
@@ -97,8 +110,11 @@
 		660DC5791C06E0D800D94F8C /* FanHealthKit */ = {
 			isa = PBXGroup;
 			children = (
+				660DC5AA1C06E10600D94F8C /* FanHealthKit.entitlements */,
 				660DC57A1C06E0D800D94F8C /* AppDelegate.swift */,
 				660DC57C1C06E0D800D94F8C /* ViewController.swift */,
+				660DC5AB1C06EC7B00D94F8C /* FanHealthManager.swift */,
+				660DC5AD1C0706BD00D94F8C /* ViewControllers */,
 				660DC57E1C06E0D800D94F8C /* Main.storyboard */,
 				660DC5811C06E0D800D94F8C /* Assets.xcassets */,
 				660DC5831C06E0D800D94F8C /* LaunchScreen.storyboard */,
@@ -123,6 +139,16 @@
 				660DC59C1C06E0D800D94F8C /* Info.plist */,
 			);
 			path = FanHealthKitUITests;
+			sourceTree = "<group>";
+		};
+		660DC5AD1C0706BD00D94F8C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				660DC5AE1C0706F900D94F8C /* FanHealthKitTableViewController.swift */,
+				660DC5B01C070FBC00D94F8C /* FanWorkoutTableViewController.swift */,
+				6606ABED1C07F1D00084ECEA /* FanUserInfoTableViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +219,12 @@
 				TargetAttributes = {
 					660DC5761C06E0D800D94F8C = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = NW3X9NZ9UP;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					660DC58A1C06E0D800D94F8C = {
 						CreatedOnToolsVersion = 7.1;
@@ -256,7 +288,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6606ABEE1C07F1D00084ECEA /* FanUserInfoTableViewController.swift in Sources */,
+				660DC5AC1C06EC7B00D94F8C /* FanHealthManager.swift in Sources */,
 				660DC57D1C06E0D800D94F8C /* ViewController.swift in Sources */,
+				660DC5AF1C0706F900D94F8C /* FanHealthKitTableViewController.swift in Sources */,
+				660DC5B11C070FBC00D94F8C /* FanWorkoutTableViewController.swift in Sources */,
 				660DC57B1C06E0D800D94F8C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,10 +435,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FanHealthKit/FanHealthKit.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanHealthKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanHealthKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -410,10 +451,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FanHealthKit/FanHealthKit.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanHealthKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanHealthKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -484,6 +530,7 @@
 				660DC5A11C06E0D800D94F8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		660DC5A21C06E0D800D94F8C /* Build configuration list for PBXNativeTarget "FanHealthKitTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +539,7 @@
 				660DC5A41C06E0D800D94F8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		660DC5A51C06E0D800D94F8C /* Build configuration list for PBXNativeTarget "FanHealthKitUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +548,7 @@
 				660DC5A71C06E0D800D94F8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
