@@ -44,20 +44,20 @@ class FanHealthKitTableViewController: UITableViewController {
     }
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 3
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.section==2){
             self.authorizeHealthKit();
         }
-        tableView .deselectRowAtIndexPath(indexPath, animated: true);
+        tableView .deselectRow(at: indexPath, animated: true);
     }
 
     /*
@@ -108,14 +108,14 @@ class FanHealthKitTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier=="HealthKit1" {
-            let healthVC1=segue.destinationViewController as! FanUserInfoTableViewController;
+            let healthVC1=segue.destination as! FanUserInfoTableViewController;
             healthVC1.healthManager=healthManager;
         }else if segue.identifier=="HealthKit2" {
-            let healthVC2=segue.destinationViewController as! FanWorkoutTableViewController;
+            let healthVC2=segue.destination as! FanWorkoutTableViewController;
             healthVC2.healthManager=healthManager;
         }
     }

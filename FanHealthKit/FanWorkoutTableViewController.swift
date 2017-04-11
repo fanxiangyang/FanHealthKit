@@ -17,20 +17,20 @@ class FanWorkoutTableViewController: UITableViewController {
     
     // MARK: - Formatters
     /// 日期格式化
-    lazy var dateFormatter:NSDateFormatter = {
+    lazy var dateFormatter:DateFormatter = {
         
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
-        formatter.dateStyle = .MediumStyle
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .medium
         return formatter;
         
     }()
     /// 时间格式化
-    let durationFormatter = NSDateComponentsFormatter()
+    let durationFormatter = DateComponentsFormatter()
     /// 能量格式化
-    let energyFormatter = NSEnergyFormatter()
+    let energyFormatter = EnergyFormatter()
     /// 长度格式化
-    let distanceFormatter = NSLengthFormatter()
+    let distanceFormatter = LengthFormatter()
 
 
     override func viewDidLoad() {
@@ -40,8 +40,8 @@ class FanWorkoutTableViewController: UITableViewController {
          self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         let addBar = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("addRunningWorkout"))
-        let refreshBar = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: Selector("refreshRunningHealthKit"))
+         let addBar = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(FanWorkoutTableViewController.addRunningWorkout))
+        let refreshBar = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(FanWorkoutTableViewController.refreshRunningHealthKit))
         self.navigationItem.rightBarButtonItems=[addBar,refreshBar]
         
         self.title="运动数据刷新/添加"
@@ -55,14 +55,14 @@ class FanWorkoutTableViewController: UITableViewController {
     func refreshRunningHealthKit(){
         healthManager?.readRunningWorkOuts({ (results, error) -> Void in
             if( error != nil ){
-                print("Error reading workouts: \(error.localizedDescription)")
+                print("Error reading workouts: \(error?.localizedDescription)")
                 return;
             }else{
                 print("Workouts read successfully!")
             }
             self.workouts.removeAll()
             self.workouts = results as! [HKWorkout]
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self.tableView.reloadData()
             });
         })
@@ -71,10 +71,10 @@ class FanWorkoutTableViewController: UITableViewController {
      添加一个运动
      */
     func addRunningWorkout(){
-        var hkUnit = HKUnit.meterUnitWithMetricPrefix(.Kilo)//千米
-        hkUnit = HKUnit.mileUnit()//米
+        var hkUnit = HKUnit.meterUnit(with: .kilo)//千米
+        hkUnit = HKUnit.mile()//米
         // 2. 保存
-        self.healthManager?.saveRunningWorkout(NSDate(timeIntervalSinceNow: -1800), endDate: NSDate(timeIntervalSinceNow: 0), distance: 2000 , distanceUnit:hkUnit, kiloCalories: 1000, completion: { (success, error ) -> Void in
+        self.healthManager?.saveRunningWorkout(Date(timeIntervalSinceNow: -1800), endDate: Date(timeIntervalSinceNow: 0), distance: 2000 , distanceUnit:hkUnit, kiloCalories: 1000, completion: { (success, error ) -> Void in
             if( success )
             {
                 print("Workout saved!")
@@ -91,36 +91,36 @@ class FanWorkoutTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.workouts.count
     }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("WorkCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WorkCell", for: indexPath)
         cell.textLabel?.text="\(indexPath.row)"
         cell.detailTextLabel?.numberOfLines = 0;
-        cell.detailTextLabel?.textAlignment = .Left
+        cell.detailTextLabel?.textAlignment = .left
         let workout  = workouts[indexPath.row]
-        let startDate = dateFormatter.stringFromDate(workout.startDate)
+        let startDate = dateFormatter.string(from: workout.startDate)
         var detailText = "开始时间: " + startDate + "\n"
-        detailText += "耗时:" + durationFormatter.stringFromTimeInterval(workout.duration)! + "\n"
-        let distanceInMiles = workout.totalDistance!.doubleValueForUnit(HKUnit.mileUnit())
-        detailText +=  "距离: " + distanceFormatter.stringFromValue(distanceInMiles, unit: NSLengthFormatterUnit.Mile)
-        let energyBurned = workout.totalEnergyBurned!.doubleValueForUnit(HKUnit.jouleUnit())
-        detailText += " 能量:" + energyFormatter.stringFromJoules(energyBurned)
+        detailText += "耗时:" + durationFormatter.string(from: workout.duration)! + "\n"
+        let distanceInMiles = workout.totalDistance!.doubleValue(for: HKUnit.mile())
+        detailText +=  "距离: " + distanceFormatter.string(fromValue: distanceInMiles, unit: LengthFormatter.Unit.mile)
+        let energyBurned = workout.totalEnergyBurned!.doubleValue(for: HKUnit.joule())
+        detailText += " 能量:" + energyFormatter.string(fromJoules: energyBurned)
         cell.detailTextLabel?.text = detailText;   
 
         return cell
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView .deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView .deselectRow(at: indexPath, animated: true)
     }
 
     /*

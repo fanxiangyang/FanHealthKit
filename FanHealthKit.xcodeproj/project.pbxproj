@@ -15,10 +15,10 @@
 		660DC5851C06E0D800D94F8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660DC5831C06E0D800D94F8C /* LaunchScreen.storyboard */; };
 		660DC5901C06E0D800D94F8C /* FanHealthKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC58F1C06E0D800D94F8C /* FanHealthKitTests.swift */; };
 		660DC59B1C06E0D800D94F8C /* FanHealthKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC59A1C06E0D800D94F8C /* FanHealthKitUITests.swift */; };
-		660DC5A91C06E10600D94F8C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660DC5A81C06E10600D94F8C /* HealthKit.framework */; };
 		660DC5AC1C06EC7B00D94F8C /* FanHealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC5AB1C06EC7B00D94F8C /* FanHealthManager.swift */; };
 		660DC5AF1C0706F900D94F8C /* FanHealthKitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC5AE1C0706F900D94F8C /* FanHealthKitTableViewController.swift */; };
 		660DC5B11C070FBC00D94F8C /* FanWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660DC5B01C070FBC00D94F8C /* FanWorkoutTableViewController.swift */; };
+		66EEAF8A1E8277D700B6BF67 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EEAF891E8277D700B6BF67 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,11 +53,11 @@
 		660DC5961C06E0D800D94F8C /* FanHealthKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FanHealthKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		660DC59A1C06E0D800D94F8C /* FanHealthKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanHealthKitUITests.swift; sourceTree = "<group>"; };
 		660DC59C1C06E0D800D94F8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		660DC5A81C06E10600D94F8C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		660DC5AA1C06E10600D94F8C /* FanHealthKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FanHealthKit.entitlements; sourceTree = "<group>"; };
 		660DC5AB1C06EC7B00D94F8C /* FanHealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanHealthManager.swift; sourceTree = "<group>"; };
 		660DC5AE1C0706F900D94F8C /* FanHealthKitTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanHealthKitTableViewController.swift; sourceTree = "<group>"; };
 		660DC5B01C070FBC00D94F8C /* FanWorkoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanWorkoutTableViewController.swift; sourceTree = "<group>"; };
+		66EEAF891E8277D700B6BF67 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				660DC5A91C06E10600D94F8C /* HealthKit.framework in Frameworks */,
+				66EEAF8A1E8277D700B6BF67 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,11 +89,11 @@
 		660DC56E1C06E0D800D94F8C = {
 			isa = PBXGroup;
 			children = (
-				660DC5A81C06E10600D94F8C /* HealthKit.framework */,
 				660DC5791C06E0D800D94F8C /* FanHealthKit */,
 				660DC58E1C06E0D800D94F8C /* FanHealthKitTests */,
 				660DC5991C06E0D800D94F8C /* FanHealthKitUITests */,
 				660DC5781C06E0D800D94F8C /* Products */,
+				66EEAF841E82729E00B6BF67 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,6 +149,14 @@
 				6606ABED1C07F1D00084ECEA /* FanUserInfoTableViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		66EEAF841E82729E00B6BF67 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66EEAF891E8277D700B6BF67 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,12 +222,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "向阳凡";
 				TargetAttributes = {
 					660DC5761C06E0D800D94F8C = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = NW3X9NZ9UP;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -228,10 +237,12 @@
 					};
 					660DC58A1C06E0D800D94F8C = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 660DC5761C06E0D800D94F8C;
 					};
 					660DC5951C06E0D800D94F8C = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 660DC5761C06E0D800D94F8C;
 					};
 				};
@@ -361,8 +372,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -406,8 +419,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -426,6 +441,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -438,12 +454,14 @@
 				CODE_SIGN_ENTITLEMENTS = FanHealthKit/FanHealthKit.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = NW3X9NZ9UP;
 				INFOPLIST_FILE = FanHealthKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanHealthKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -454,12 +472,14 @@
 				CODE_SIGN_ENTITLEMENTS = FanHealthKit/FanHealthKit.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = NW3X9NZ9UP;
 				INFOPLIST_FILE = FanHealthKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanHealthKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -471,6 +491,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanHealthKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FanHealthKit.app/FanHealthKit";
 			};
 			name = Debug;
@@ -483,6 +504,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanHealthKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FanHealthKit.app/FanHealthKit";
 			};
 			name = Release;
@@ -494,6 +516,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanHealthKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = FanHealthKit;
 				USES_XCTRUNNER = YES;
 			};
@@ -506,6 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanHealthKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = FanHealthKit;
 				USES_XCTRUNNER = YES;
 			};

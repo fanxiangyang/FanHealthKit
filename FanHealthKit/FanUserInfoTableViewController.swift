@@ -66,20 +66,20 @@ class FanUserInfoTableViewController: UITableViewController {
     func updateWeight(){
         var weightLocalizedString = "无数据";
         
-        let sampleType=HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)
+        let sampleType=HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)
         self.healthManager?.readMostRecentSample(sampleType!, completion: { (mostRecentWeight, error) -> Void in
             if error != nil {
-                print("读取体重出错: \(error.localizedDescription)")
+                print("读取体重出错: \(error?.localizedDescription)")
             }
             self.weight = mostRecentWeight as? HKQuantitySample
             
-            if let kilograms = self.weight?.quantity.doubleValueForUnit(HKUnit.gramUnitWithMetricPrefix(.Kilo)) {
-                let weightFormatter = NSMassFormatter()
-                weightFormatter.forPersonMassUse = true;
-                weightLocalizedString = weightFormatter.stringFromKilograms(kilograms)
+            if let kilograms = self.weight?.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo)) {
+                let weightFormatter = MassFormatter()
+                weightFormatter.isForPersonMassUse = true;
+                weightLocalizedString = weightFormatter.string(fromKilograms: kilograms)
             }
             // 主线程更新（因为healthKit是线程操作）
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self.weightLabel.text = weightLocalizedString
                 //更新体重指数
                 self.updateBMI()
@@ -90,20 +90,20 @@ class FanUserInfoTableViewController: UITableViewController {
     func updateHeight(){
         var heightLocalizedString = "无数据";
         
-        let sampleType=HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)
+        let sampleType=HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)
         self.healthManager?.readMostRecentSample(sampleType!, completion: { (mostRecentHeight, error) -> Void in
             if error != nil {
-                print("读取身高出错: \(error.localizedDescription)")
+                print("读取身高出错: \(error?.localizedDescription)")
             }
             self.height = mostRecentHeight as? HKQuantitySample
             
-            if let meters = self.height?.quantity.doubleValueForUnit(HKUnit.meterUnit()) {
-                let heightFormatter = NSLengthFormatter()
-                heightFormatter.forPersonHeightUse = true;
-                heightLocalizedString = heightFormatter.stringFromMeters(meters)
+            if let meters = self.height?.quantity.doubleValue(for: HKUnit.meter()) {
+                let heightFormatter = LengthFormatter()
+                heightFormatter.isForPersonHeightUse = true;
+                heightLocalizedString = heightFormatter.string(fromMeters: meters)
             }
             // 主线程更新（因为healthKit是线程操作）
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self.heightLabel.text = heightLocalizedString
                 //更新体重指数
                 self.updateBMI()
@@ -115,10 +115,10 @@ class FanUserInfoTableViewController: UITableViewController {
         var weightInKilograms:Double=0
         var heightInMeters:Double=0
         if weight != nil && height != nil {
-            weightInKilograms = weight!.quantity.doubleValueForUnit(HKUnit.gramUnitWithMetricPrefix(.Kilo))
-            heightInMeters = height!.quantity.doubleValueForUnit(HKUnit.meterUnit())
+            weightInKilograms = weight!.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
+            heightInMeters = height!.quantity.doubleValue(for: HKUnit.meter())
         }
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+        DispatchQueue.main.async { () -> Void in
             if heightInMeters != 0 {
                 self.bmi=weightInKilograms/heightInMeters
                 self.bodyBMILabel.text =  String(format: "%.02f%%", self.bmi)
@@ -136,12 +136,12 @@ class FanUserInfoTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 4
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if (section == 0 || section == 1) {
             return 3
@@ -149,16 +149,16 @@ class FanUserInfoTableViewController: UITableViewController {
         return 1
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
             //重新加载数据
             updateUserInfo();
         }else if indexPath.section == 3 {
             if bmi > 0.0 {
-                healthManager?.saveBMISample(bmi, date: NSDate())
+                healthManager?.saveBMISample(bmi, date: Date())
             }
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -216,28 +216,28 @@ class FanUserInfoTableViewController: UITableViewController {
     */
     // MARK: - 辅助方法
    //血型转字符串
-    func bloodTypeLiteral(bloodType:HKBloodType?)->String{
+    func bloodTypeLiteral(_ bloodType:HKBloodType?)->String{
         
         var bloodTypeText = "未设置";
         
         if bloodType != nil {
             
             switch( bloodType! ) {
-            case .APositive:
+            case .aPositive:
                 bloodTypeText = "A+"
-            case .ANegative:
+            case .aNegative:
                 bloodTypeText = "A-"
-            case .BPositive:
+            case .bPositive:
                 bloodTypeText = "B+"
-            case .BNegative:
+            case .bNegative:
                 bloodTypeText = "B-"
-            case .ABPositive:
+            case .abPositive:
                 bloodTypeText = "AB+"
-            case .ABNegative:
+            case .abNegative:
                 bloodTypeText = "AB-"
-            case .OPositive:
+            case .oPositive:
                 bloodTypeText = "O+"
-            case .ONegative:
+            case .oNegative:
                 bloodTypeText = "O-"
             default:
                 break;
@@ -246,17 +246,17 @@ class FanUserInfoTableViewController: UITableViewController {
         return bloodTypeText;
     }
     //性别转换
-    func biologicalSexLiteral(biologicalSex:HKBiologicalSex?)->String{
+    func biologicalSexLiteral(_ biologicalSex:HKBiologicalSex?)->String{
         var sexString="未设置"
         if  biologicalSex != nil {
             switch biologicalSex! {
-            case .Female :
+            case .female :
                 sexString="女"
                 break
-            case .Male:
+            case .male:
                 sexString="男"
                 break
-            case .Other:
+            case .other:
                 sexString="变性人"
                 break
             default:

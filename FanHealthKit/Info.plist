@@ -14,6 +14,12 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>NSHomeKitUsageDescription</key>
+	<string>使用健康数据</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>更新健康权限</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>分享健康数据</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
